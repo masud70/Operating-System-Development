@@ -7,7 +7,8 @@ OBJ = ${C_SOURCES:.c=.o}
 CC = /usr/local/i386elfgcc/bin/i386-elf-gcc
 GDB = /usr/local/i386elfgcc/bin/i386-elf-gdb
 # -g: Use debugging symbols in gcc
-CFLAGS = -g
+CFLAGS = -g 
+#  -ffreestanding -Wall -Wextra -fno-exceptions -m32
 
 # First rule is run by default
 os-image.bin: boot/boot.bin kernel.bin

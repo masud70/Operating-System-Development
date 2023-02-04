@@ -19,10 +19,10 @@ KERNEL_OFFSET equ 0x1000    ; Kernel offset starts from here.
     jmp $                   ; Never executed
 
 %include "boot/print.asm"
-%include "boot/disc_loader.asm"
+%include "boot/disk.asm"
 %include "boot/gdt.asm"
-%include "boot/protected-mode-print.asm"
-%include "boot/switch.asm"
+%include "boot/pm_print.asm"
+%include "boot/switch_pm.asm"
 
 [bits 16]
 load_kernel:
@@ -31,9 +31,9 @@ load_kernel:
     call print_nl
 
     mov bx, KERNEL_OFFSET       ; Read from disk and store in 0x1000
-    mov dh, 2
+    mov dh, 16
     mov dl, [BOOT_DRIVE]
-    call load_disc
+    call disk_load
     ret
 
 [bits 32]

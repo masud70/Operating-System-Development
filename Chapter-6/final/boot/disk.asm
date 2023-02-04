@@ -2,7 +2,7 @@
 ; Function to load dh sectors from disc.
 ;
 
-load_disc:
+disk_load:
     pusha
     ; Store dx (dh) for further use.
     push dx

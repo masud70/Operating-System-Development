@@ -1,6 +1,7 @@
 ;
 ; Function for printing a string received in bx and ended with a character '0'.
 ;
+
 print:
     ; First push all the registers into the stack
     pusha
@@ -46,9 +47,9 @@ print_hex:
     pusha
     mov cx, 0
 
-    start1:
+    start_loop:
         cmp cx, 4
-        je done1
+        je end
 
         ror dx, 12
         mov ax, dx
@@ -63,8 +64,8 @@ print_hex:
         int 0x10
 
         inc cx
-        jmp start1
+        jmp start_loop
     
-    done1:
+    end:
         popa
         ret
